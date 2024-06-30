@@ -64,6 +64,7 @@ nav ul li a:hover, .hire-me:hover {
 /* Menu Toggle */
 .menu-toggle {
     display: none;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -442,6 +443,8 @@ html {
         position: absolute;
         top: 60px;
         left: 0;
+        max-height: calc(100vh - 60px); /* Asegúrate de que el menú no ocupe toda la pantalla */
+        overflow-y: auto; /* Añadir desplazamiento vertical si es necesario */
     }
 
     nav ul {
@@ -453,7 +456,7 @@ html {
     }
 
     nav ul li {
-        margin: 10px 0;
+        margin: 0;
         width: 100%;
         text-align: center;
     }
@@ -461,17 +464,29 @@ html {
     nav ul li a {
         display: block;
         width: 100%;
-        padding: 15px 0;
-        font-size: 1.2rem;
-        border-top: 1px solid #3f7d7b;
+        padding: 10px 0;
+        font-size: 1rem;
+        color: #ffffff;
+        text-decoration: none;
+        border-bottom: 1px solid #3f7d7b;
     }
 
     nav ul li a:hover {
-        background-color: #3f7d7b;
+        background-color: #285d59;
     }
 
     nav.active {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        position: fixed; /* Asegúrate de que el menú se mantenga en su lugar */
+        top: 60px;
+        left: 20px; /* Ajuste para que no ocupe todo el ancho */
+        right: 20px; /* Ajuste para que no ocupe todo el ancho */
+        z-index: 999;
+        background-color: rgba(46, 88, 87, 0.95); /* Fondo semitransparente para mejor visibilidad */
+        border-radius: 10px; /* Bordes redondeados para un mejor diseño */
     }
 
     .hire-me {
@@ -610,4 +625,26 @@ html {
     .faq-item p {
         font-size: 1.2rem;
     }
+}
+
+/* Animación de Rebote */
+@keyframes bounceIn {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+nav ul li {
+    animation: bounceIn 0.6s;
+    transition: transform 0.3s;
+}
+
+nav ul li:hover {
+    transform: translateY(-5px);
 }
