@@ -64,7 +64,6 @@ nav ul li a:hover, .hire-me:hover {
 /* Menu Toggle */
 .menu-toggle {
     display: none;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
@@ -72,24 +71,14 @@ nav ul li a:hover, .hire-me:hover {
     height: 30px;
 }
 
-.menu-toggle span {
-    width: 100%;
-    height: 3px;
-    background-color: #000000; /* Cambiar a negro */
-    margin: 5px 0;
-    transition: all 0.4s;
+.menu-icon {
+    width: 24px;
+    height: 24px;
+    fill: #ffffff;
 }
 
-.menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+.menu-toggle.active .menu-icon {
+    transform: rotate(90deg);
 }
 
 /* Intro y otras secciones */
@@ -166,18 +155,30 @@ p {
 .about {
     padding: 50px 100px;
     background-color: #f9f9f9;
+    width: 100%;
 }
 
 .about-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 .about-text {
     max-width: 50%;
     font-size: 1.2rem;
     color: #585C5B;
+    margin-bottom: 20px;
+    text-align: left;
+    order: 2; /* Cambiar el orden del texto */
+}
+
+.about-image {
+    max-width: 50%;
+    margin-bottom: 20px;
+    order: 1; /* Cambiar el orden de la imagen */
 }
 
 .about-image img {
@@ -370,7 +371,7 @@ p {
 }
 
 .contact-text {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #585C5B;
 }
 
@@ -414,7 +415,21 @@ html {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    header {
+        padding: 20px 50px;
+    }
+    
+    nav ul li {
+        margin: 0 10px;
+    }
+}
+
 @media (max-width: 768px) {
+    header {
+        padding: 20px;
+    }
+
     .menu-toggle {
         display: flex;
     }
@@ -433,14 +448,26 @@ html {
         flex-direction: column;
         align-items: center;
         width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     nav ul li {
         margin: 10px 0;
+        width: 100%;
+        text-align: center;
     }
 
     nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 15px 0;
         font-size: 1.2rem;
+        border-top: 1px solid #3f7d7b;
+    }
+
+    nav ul li a:hover {
+        background-color: #3f7d7b;
     }
 
     nav.active {
@@ -449,6 +476,13 @@ html {
 
     .hire-me {
         margin: 10px 0;
+        width: 90%;
+        text-align: center;
+    }
+
+    .hire-me:hover {
+        background-color: #58908B;
+        color: #ffffff;
     }
 
     .intro {
@@ -468,6 +502,18 @@ html {
     .about-content {
         flex-direction: column;
         text-align: center;
+    }
+
+    .about-text {
+        max-width: 100%;
+        text-align: center;
+        padding: 0 20px;
+        order: 1; /* Cambiar el orden del texto */
+    }
+
+    .about-image {
+        max-width: 100%;
+        order: 2; /* Cambiar el orden de la imagen */
     }
 
     .buttons {
@@ -502,6 +548,29 @@ html {
 }
 
 @media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .menu-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    nav ul li a {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+
+    .hire-me {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
     .intro {
         padding: 150px 20px 50px 20px;
     }
